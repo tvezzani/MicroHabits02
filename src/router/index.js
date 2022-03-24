@@ -2,6 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BlahView from '../views/BlahView.vue'
 import MoviesView from '../views/MoviesView.vue'
+import DashboardView from '../views/DashboardView.vue'
+import TrackView from '../views/TrackView.vue'
+import MyGoalsView from '../views/MyGoalsView.vue'
+import ProfileView from '../views/ProfileView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
   {
@@ -18,7 +23,32 @@ const routes = [
     path: '/movies',
     name: 'movies',
     component: MoviesView
-  },    
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: DashboardView
+  },
+  {
+    path: '/track',
+    name: 'track',
+    component: TrackView
+  },
+  {
+    path: '/my-goals',
+    name: 'my-goals',
+    component: MyGoalsView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
   {
     path: '/about',
     name: 'about',

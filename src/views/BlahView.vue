@@ -1,5 +1,5 @@
 <template>
-  <div class="blah-view">
+  <div class="blah">
     <Blah msg="Hello, Tim.  How are you?" />
     <Movies/>
   </div>

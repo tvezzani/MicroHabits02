@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-view">
+  <div class="movies">
     <Movies msg="This is the movies view."/>
   </div>
 </template>
