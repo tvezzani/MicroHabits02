@@ -3,9 +3,7 @@
     <div class="content">
       <div class="title">
         <p class="title is-4">{{ card.title }}</p>
-        <p class="subtitle is-6">
-          {{ Math.round((card.daysSuccessful / card.daysTotal) * 100) / 100 }}%
-        </p>
+        <p class="subtitle is-6">{{ percentageWorked }}%</p>
       </div>
       <progress
         class="progress is-info"
@@ -19,6 +17,12 @@
 <script>
 export default {
   props: ["card"],
+  computed: {
+    percentageWorked() {
+      if (this.card.daysTotal == 0) return 0;
+      return Math.round((this.card.daysSuccessful / this.card.daysTotal) * 100) / 100;
+    },
+  },
 };
 </script>
 

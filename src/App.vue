@@ -57,9 +57,7 @@ initAuth();
       <div v-if="!AuthState.isAuthenticated">
         <div class="section has-background-light">
           <p class="subtitle">Log in to get started!</p>
-        <button class="button is-link" @click="login()">
-          Login
-        </button>
+          <button class="button is-link" @click="login()">Login</button>
         </div>
       </div>
     </div>
@@ -67,15 +65,24 @@ initAuth();
       <button class="button is-medium is-link mt-4 is-loading"></button>
     </div>
     <router-view />
+    <!-- <div class="testing-json">{{displayGoalsList}}</div> -->
+    <!-- <test-goal-item
+      v-for="goal in displayGoalsList"
+      :key="goal.id"
+      :goalData="goal"
+    ></test-goal-item> -->
     <div class="footer has-background-light">
       <section class="section is-medium">
         <b>Micro Habits</b> by Timothy Vezzani. All rights reserved.
       </section>
     </div>
+    <!-- <div>{{ displaySomething }}</div> -->
   </div>
 </template>
 
 <script>
+import TestGoalItem from "./components/TestGoalItem.vue";
+
 function mobileMenu() {
   document.addEventListener("DOMContentLoaded", () => {
     // Get all "navbar-burger" elements
@@ -106,20 +113,47 @@ function mobileMenu() {
 
 export default {
   name: "App",
+  data() {},
+  computed: {
+    displayGoalsList() {
+      return this.$store.getters["displayGoals"];
+    },
+    displaySomething() {
+      return this.$store.getters["displaySomething"];
+    },
+  },
   methods: {
     // Log the user in
-    login() {
-      this.$auth.loginWithRedirect();
-    },
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin,
-      });
-    },
+    // login() {
+    //   this.$auth.loginWithRedirect();
+    // },
+    // // Log the user out
+    // logout() {
+    //   this.$auth.logout({
+    //     returnTo: window.location.origin,
+    //   });
+    // },
   },
   mounted() {
     mobileMenu();
+  },
+  created() {
+    this.$store
+      .dispatch("fetchSomething")
+      // .then((something) => {
+      //   this.something = something;
+      // })
+      .catch((error) => {
+        // you got an error!
+      }),
+      this.$store
+        .dispatch("fetchGoals")
+        // .then((something) => {
+        //   this.something = something;
+        // })
+        .catch((error) => {
+          // you got an error!
+        });
   },
 };
 </script>

@@ -70,9 +70,9 @@ export default {
     showSomething: function () {
       return `**${this.name}**`;
     },
-    addMovie: function () {
+    addMovie: async function () {
       // make call to express to get json
-      fetch(`http://localhost:3000/goals`, {
+      await fetch(`http://localhost:3000/goals`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,10 +83,28 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(">>>data", data);
+          // this.$router.push("/my-goals");
         })
         .catch((err) => {
           console.error(err);
         });
+      this.$store
+        .dispatch("fetchSomething")
+        .then(() => {
+            this.$router.push("/my-goals");
+        })
+        .catch((error) => {
+          // you got an error!
+        })
+        // await fetch(`http://localhost:3000/`)
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     this.dispatch;
+        //     this.$router.push("/my-goals");
+        //   })
+        //   .catch((err) => {
+        //     console.error(err);
+        //   });
     },
   },
   mounted() {},
