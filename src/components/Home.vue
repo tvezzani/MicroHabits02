@@ -2,12 +2,15 @@
   <div class="home-view">
     <div class="hero is-large is-primary">
       <div class="hero-body">
-        <p class="title is-1">Micro Habits</p>
+        <p class="title is-1">MICRO HABITS</p>
         <p class="subtitle-1">Steps to success</p>
       </div>
     </div>
     <div class="section is-medium">
-      <p class="subtitle">A utility app for helping you build and maintain small but powerful daily habits</p>
+      <p class="subtitle">
+        A utility app for helping you build and maintain small but powerful
+        daily habits
+      </p>
       <p>
         MicroHabits can help you track building better habits through small,
         repetitive daily actions. You would be able to set your own goals and

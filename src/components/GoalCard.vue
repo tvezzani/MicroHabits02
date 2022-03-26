@@ -1,25 +1,31 @@
 <template>
   <div class="box has-text-left m-4">
     <div class="goalCardTitle">
-      <p class="title is-4">Wash Dishes</p>
+      <p class="title is-4">{{card.title}}</p>
       <button class="delete is-medium"></button>
     </div>
     <div class="content">
       <div class="block">
         <b>Description</b>
-        <p>Wash the dishes daily.</p>
+        <p>{{card.description}}</p>
       </div>
       <div class="block">
         <b>Question</b>
-        <p>Did you wash the dishes?</p>
+        <p>{{card.prompt}}</p>
       </div>
       <div class="block">
         <b>Correct Answer</b>
-        <p>Yes</p>
+        <p>{{card.correctAnswer}}</p>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    props: ['card'],
+  };
+</script>
 
 <style scoped>
 .box {

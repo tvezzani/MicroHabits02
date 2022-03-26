@@ -5,7 +5,11 @@
         <div class="columns">
           <div class="is-flex is-flex-direction-row">
             <p class="title">My Goals</p>
-            <button id="submit" class="button is-link ml-4" @click="addMovie">
+            <button
+              id="submit"
+              class="button is-link ml-4"
+              @click="$router.push('add-goal')"
+            >
               Add Goal
             </button>
           </div>
@@ -18,8 +22,5 @@
 <script>
 export default {
   name: "MyGoals",
-  props: {
-    msg: String,
-  },
 };
 </script>

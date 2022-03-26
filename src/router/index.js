@@ -7,6 +7,9 @@ import TrackView from '../views/TrackView.vue'
 import MyGoalsView from '../views/MyGoalsView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import LoginView from '../views/LoginView.vue'
+import SignupView from '../views/SignupView.vue'
+import AddGoalView from '../views/AddGoalView.vue'
+import ChangePasswordView from '../views/ChangePasswordView.vue'
 
 const routes = [
   {
@@ -18,7 +21,7 @@ const routes = [
     path: '/blah',
     name: 'blah',
     component: BlahView
-  },  
+  },
   {
     path: '/movies',
     name: 'movies',
@@ -45,9 +48,24 @@ const routes = [
     component: ProfileView
   },
   {
+    path: '/signup',
+    name: 'signup',
+    component: SignupView
+  },
+  {
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/add-goal',
+    name: 'add-goal',
+    component: AddGoalView
+  },
+  {
+    path: '/change-password',
+    name: 'change-password',
+    component: ChangePasswordView
   },
   {
     path: '/about',

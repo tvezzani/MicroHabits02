@@ -6,7 +6,7 @@
           Ready to log your progress for today?
         </p>
         <div class="collumn is-narrow"></div>
-        <button class="button callToAction is-link">Track Habits</button>
+        <button class="button callToAction is-link" @click="$router.push('track')">Track Habits</button>
       </div>
     </section>
     <section class="hero is-white">

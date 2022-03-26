@@ -11,7 +11,13 @@
         <button class="button is-primary">Edit</button>
       </div>
       <div class="buttons">
-        <button class="button is-primary">Change Password</button>
+        <button
+          class="button is-primary"
+          @click="$router.push('change-password')"
+        >
+          Change Password
+        </button>
+        <button class="button is-danger">Clear All Goals</button>
       </div>
     </div>
   </div>
