@@ -138,14 +138,14 @@ export default {
     mobileMenu();
   },
   created() {
-    this.$store
-      .dispatch("fetchSomething")
-      // .then((something) => {
-      //   this.something = something;
-      // })
-      .catch((error) => {
-        // you got an error!
-      }),
+    // this.$store
+    //   .dispatch("fetchSomething")
+    //   // .then((something) => {
+    //   //   this.something = something;
+    //   // })
+    //   .catch((error) => {
+    //     // you got an error!
+    //   }),
       this.$store
         .dispatch("fetchGoals")
         // .then((something) => {

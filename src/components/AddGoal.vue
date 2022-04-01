@@ -29,9 +29,29 @@
               v-model="prompt"
             ></textarea>
           </div>
+          <div class="field">
+            <label class="label">Correct Answer</label>
+            <div class="field has-text-grey">
+              Select the correct answer. For example, no for bad habits you want
+              to break, and yes for everything else.
+            </div>
+            <label class="radio">
+              <input
+                type="radio"
+                id="yes"
+                value="Yes"
+                v-model="correctAnswer"
+              />
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" id="no" value="No" v-model="correctAnswer" />
+              No
+            </label>
+          </div>
         </div>
         <div class="buttons is-centered">
-          <button id="submit" class="button is-link" @click="addMovie">
+          <button id="submit" class="button is-link" @click="addGoal">
             Add Goal
           </button>
         </div>
@@ -41,6 +61,7 @@
 </template>
 
 <script>
+import { AuthState } from '@/utils/useAuth0';
 export default {
   name: "AddMovie",
   props: {
@@ -57,6 +78,11 @@ export default {
       description: "",
       prompt: "",
       name: "Tim",
+      correctAnswer: "Yes",
+      currentAnswer: "Yes",
+      daysSuccessful: 0,
+      daysTotal: 0,
+      username: "admin",
     };
   },
   methods: {
@@ -65,12 +91,17 @@ export default {
         title: this.title,
         description: this.description,
         prompt: this.prompt,
+        correctAnswer: this.correctAnswer,
+        currentAnswer: this.currentAnswer,
+        daysSuccessful: this.daysSuccessful,
+        daysTotal: this.daysTotal,
+        username: AuthState.user.name,
       };
     },
     showSomething: function () {
       return `**${this.name}**`;
     },
-    addMovie: async function () {
+    addGoal: async function () {
       // make call to express to get json
       await fetch(`http://localhost:3000/goals`, {
         method: "POST",
@@ -91,20 +122,20 @@ export default {
       this.$store
         .dispatch("fetchSomething")
         .then(() => {
-            this.$router.push("/my-goals");
+          this.$router.push("my-goals");
         })
         .catch((error) => {
           // you got an error!
-        })
-        // await fetch(`http://localhost:3000/`)
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     this.dispatch;
-        //     this.$router.push("/my-goals");
-        //   })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
+        });
+      // await fetch(`http://localhost:3000/`)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     this.dispatch;
+      //     this.$router.push("/my-goals");
+      //   })
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
     },
   },
   mounted() {},

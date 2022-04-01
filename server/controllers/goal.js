@@ -1,6 +1,5 @@
 const db = require("../models");
 const Goal = db.goals;
-console.log(Goal);
 // Create and Save a new Goal
 exports.create = (req, res) => {
 
@@ -15,7 +14,11 @@ exports.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     prompt: req.body.prompt,
-    correctAnswer: req.body.correctAnswer ? req.body.correctAnswer : true
+    correctAnswer: req.body.correctAnswer ? req.body.correctAnswer : "Yes",
+    currentAnswer: req.body.currentAnswer ? req.body.currentAnswer : "Yes",
+    daysSuccessful: req.body.daysSuccessful,
+    daysTotal: req.body.daysTotal,
+    username: req.body.username
   });
 
   // Save Goal in the database
@@ -130,6 +133,28 @@ exports.findAllCorrectAnswerTrue = (req, res) => {
   Goal.find({ correctAnswer: true })
     .then(data => {
       res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving goals."
+      });
+    });
+};
+
+// Find all published Goals
+exports.findAllWithUsername = (req, res) => {
+  const _username = req.params.username;
+  Goal.find({ username: _username })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot find goals for user ${_username}.`
+        });
+      }
+      else {
+        res.send(data);
+      }
     })
     .catch(err => {
       res.status(500).send({

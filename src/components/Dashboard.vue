@@ -6,7 +6,12 @@
           Ready to log your progress for today?
         </p>
         <div class="collumn is-narrow"></div>
-        <button class="button callToAction is-link" @click="$router.push('track')">Track Habits</button>
+        <button
+          class="button callToAction is-link"
+          @click="$router.push('track')"
+        >
+          Track Habits
+        </button>
       </div>
     </section>
     <section class="hero is-white">
@@ -14,12 +19,10 @@
         <p class="title heroTitle">My Habits</p>
         <div class="progress-bar">
           <p class="title progressTitle">
-            Progress: <span class="has-text-success progressTitle">76%</span>
+            Progress: <span class="has-text-success progressTitle">25%</span>
           </p>
         </div>
-        <progress class="progress is-success" value="76" max="100">
-          15%
-        </progress>
+        <progress class="progress is-success" :value="calculateSuccessfulDays()" :max="calculateTotalDays()"></progress>
       </div>
     </section>
 
@@ -39,13 +42,22 @@
 <script>
 export default {
   name: "Dashboard",
-  props: {
-    msg: String,
-  },
+  props:["successfulDays", "totalDays", "progressPercent"],
   data() {
     return {
       callToActionActive: true,
     };
+  },
+  methods: {
+    calculateSuccessfulDays() {
+      return 2;
+    },
+    calculateTotalDays() {
+      return 3;
+    },
+    calculateTotalProgress() {
+      return 3;
+    },
   },
 };
 </script>

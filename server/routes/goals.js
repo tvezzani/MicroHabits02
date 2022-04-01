@@ -9,6 +9,8 @@ router.post("/", Goal.create);
 router.get("/", Goal.findAll);
 // Retrieve all published Goal
 router.get("/correctAnswerTrue", Goal.findAllCorrectAnswerTrue);
+// Retrieve all published Goal
+router.get("/:username", Goal.findAllWithUsername);
 // Retrieve a single Goal with id
 router.get("/:id", Goal.findOne);
 // Update a Goal with id

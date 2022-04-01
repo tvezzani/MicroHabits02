@@ -3,7 +3,7 @@
     <p class="title section">Profile</p>
     <div class="box is-white">
       <div class="buttons">
-        <p class="topLeft m-2"><b>Name:</b> Tom</p>
+        <p class="topLeft m-2"><b>Name:</b>Tom</p>
         <button class="button is-primary">Edit</button>
       </div>
       <div class="buttons">
@@ -17,7 +17,7 @@
         >
           Change Password
         </button>
-        <button class="button is-danger">Clear All Goals</button>
+        <button class="button is-danger" @click="clearGoals">Clear All Goals</button>
       </div>
     </div>
   </div>
@@ -28,6 +28,16 @@ export default {
   name: "Profile",
   props: {
     msg: String,
+  },
+  methods: {
+    clearGoals: async function () {
+      // make call to express to get json
+      await fetch(`http://localhost:3000/goals`, {
+        method: "DELETE",
+        body: JSON.stringify({ message: "Successfuly deleted all goals" }),
+      });
+      console.log("Successfully deleted all goals");
+    },
   },
 };
 </script>

@@ -1,3 +1,4 @@
+import { AuthState } from '@/utils/useAuth0'
 import { createStore } from 'vuex'
 
 export default createStore({
@@ -6,40 +7,16 @@ export default createStore({
     return {
       //testing
       something: 'Hello bob',
-      goals: [
-        {
-          id: 1,
-          title: "Wash Dishes",
-          description: "Wash the dishes daily.",
-          prompt: "Did you wash the dishes?",
-          correctAnswer: true,
-          daysSuccessful: 3,
-          daysTotal: 23,
-        },
-        {
-          id: 2,
-          title: "Read Book",
-          description: "Read a book to gain more knowledge.",
-          prompt: "Did you read a book?",
-          correctAnswer: true,
-          daysSuccessful: 9,
-          daysTotal: 12,
-        },
-        {
-          id: 3,
-          title: "Avoid Junkfood",
-          description: "Do you really need that chocolate dougnut?",
-          prompt: "Did you avoid junkfood?",
-          correctAnswer: false,
-          daysSuccessful: 14,
-          daysTotal: 15,
-        },
-      ],
+      goals: [],
+      username: 'admin'
     }
   },
   getters: {
     displayGoals: (state) => state.goals,
-    displaySomething: (state) => state.something
+    displaySomething: (state) => state.something,
+    authenticated(state) {
+      return !!state.user;
+    }
   },
   mutations: {
     setSomething(state, something) {
@@ -48,6 +25,9 @@ export default createStore({
     },
     setGoals(state, goals) {
       state.goals = goals
+    },
+    setUser(state) {
+      state.username = AuthState.user.name
     }
   },
   actions: {
@@ -61,12 +41,12 @@ export default createStore({
         })
     },
     fetchGoals(store) {
-      return fetch('http://localhost:3000/goals/')
+      return fetch(`http://localhost:3000/goals/${this.state.username}`)
         .then(response => response.json())
         .then(goals => {
           console.log(goals);
           goals = goals.map(goal => {
-            return {correctAnswer:true, daysSuccessful:0, daysTotal:0, ...goal}
+            return { correctAnswer: true, daysSuccessful: 0, daysTotal: 0, ...goal }
           })
           store.commit('setGoals', goals)
           return store.state.goals

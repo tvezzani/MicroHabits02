@@ -6,9 +6,11 @@ module.exports = mongoose => {
         title: String,
         description: String,
         prompt: String,
-        correctAnswer: Boolean,
+        correctAnswer: String,
+        currentAnswer: String,
         daysSuccessful: Number,
         daysTotal: Number,
+        username: String
       },
       { timestamps: true }
     )

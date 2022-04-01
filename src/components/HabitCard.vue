@@ -20,7 +20,7 @@ export default {
   computed: {
     percentageWorked() {
       if (this.card.daysTotal == 0) return 0;
-      return Math.round((this.card.daysSuccessful / this.card.daysTotal) * 100) / 100;
+      return Math.round((this.card.daysSuccessful / this.card.daysTotal) * 100);
     },
   },
 };

@@ -5,9 +5,9 @@
       <label class="radio">
         <input
           type="radio"
-          :name="card.id"
-          value="true"
-          v-model="card.correctAnswer"
+          id="yes"
+          value="Yes"
+          v-model="card.currentAnswer"
           @click="$emit('eventname', card)"
         />
         Yes
@@ -15,19 +15,39 @@
       <label class="radio">
         <input
           type="radio"
-          :name="card.id"
-          value="false"
-          v-model="card.correctAnswer"
+          id="no"
+          value="No"
+          v-model="card.currentAnswer"
           @click="$emit('eventname', card)"
         />
         No
       </label>
+      <!-- <input v-model="message" placeholder="edit me" />
+      <p>Message is: {{ message }}</p> -->
+      <!-- <input type="radio" id="one" value="One" v-model="picked" />
+      <label for="one">One</label>
+      <input type="radio" id="two" value="Two" v-model="picked" />
+      <label for="two">Two</label>
+      <br /> -->
+      <!-- <br>
+      <span>Picked: {{ picked }}</span> -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["card"],
+  props: ["goals", "index"],
+  data() {
+    return {
+      message: "test",
+      picked: true,
+    };
+  },
+  computed: {
+    card() {
+      return this.goals[this.index];
+    },
+  },
 };
 </script>
