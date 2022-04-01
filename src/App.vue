@@ -146,6 +146,7 @@ export default {
     //   .catch((error) => {
     //     // you got an error!
     //   }),
+    this.$store.commit
       this.$store
         .dispatch("fetchGoals")
         // .then((something) => {

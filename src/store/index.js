@@ -41,7 +41,7 @@ export default createStore({
         })
     },
     fetchGoals(store) {
-      return fetch(`http://localhost:3000/goals/${this.state.username}`)
+      return fetch(`https://micro-habits-api.herokuapp.com/goals/${this.state.username}`)
         .then(response => response.json())
         .then(goals => {
           console.log(goals);
