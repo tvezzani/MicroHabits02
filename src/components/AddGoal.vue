@@ -103,7 +103,7 @@ export default {
     },
     addGoal: async function () {
       // make call to express to get json
-      await fetch(`http://localhost:3000/goals`, {
+      await fetch(`https://micro-habits-api.herokuapp.com/goals`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
